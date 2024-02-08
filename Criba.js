@@ -22,7 +22,7 @@ function criba(number) {
   }
   
   for (let i = 2; i < number; i++) {
-			if (!numbersNotPrime.includes(i)) result.push(i)
+		if (!numbersNotPrime.includes(i)) result.push(i)
 	}
   
   return result

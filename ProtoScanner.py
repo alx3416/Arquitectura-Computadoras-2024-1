@@ -17,8 +17,8 @@ pts1 = np.float32([[33, 695], [1847, 286], [807, 3067], [3408, 2093]])  # 4 punt
 pts2 = np.float32([[0, 0], [4000, 0], [0, 6000], [4000, 6000]])  # 4 puntos posicion final
 
 # puntos para foto 2
-# pts1 = np.float32([[626,584],[2393,545],[690,3138],[2717,2977]]) # 4 puntos posicion inicial
-# pts2 = np.float32([[0,0],[4000,0],[0,6000],[4000,6000]]) # 4 puntos posicion final
+# pts1 = np.float32([[626, 584], [2393, 545], [690, 3138], [2717, 2977]])  # 4 puntos posicion inicial
+# pts2 = np.float32([[0, 0], [4000, 0], [0, 6000], [4000, 6000]])  # 4 puntos posicion final
 
 M = cv2.getPerspectiveTransform(pts1, pts2)
 img2 = cv2.warpPerspective(img, M, (4000, 6000))

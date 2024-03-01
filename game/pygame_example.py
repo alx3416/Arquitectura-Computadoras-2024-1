@@ -27,9 +27,12 @@ HEIGHT = 600
 # How quickly do you generate coins? Time is in milliseconds
 coin_countdown = 2500
 coin_interval = 100
+shell_countdown = 2500
+shell_interval = 100
 
 # How many coins can be on the screen before you end?
 COIN_COUNT = 10
+SHELL_COUNT = 10
 
 # Define the Player sprite
 class Player(pygame.sprite.Sprite):
@@ -74,6 +77,27 @@ class Coin(pygame.sprite.Sprite):
             )
         )
 
+
+class Shell(pygame.sprite.Sprite):
+    def __init__(self):
+        """Initialize the shell sprite"""
+        super(Shell, self).__init__()
+
+        # Get the image to draw for the shell
+        shell_image = str(Path.cwd() / "images" / "shell.gif")
+
+        # Load the image, preserve alpha channel for transparency
+        self.surf = pygame.image.load(shell_image).convert_alpha()
+
+        # The starting position is randomly generated
+        self.rect = self.surf.get_rect(
+            center=(
+                randint(10, WIDTH - 10),
+                randint(10, HEIGHT - 10),
+            )
+        )
+
+
 # Initialize the Pygame engine
 pygame.init()
 
@@ -90,14 +114,22 @@ clock = pygame.time.Clock()
 ADDCOIN = pygame.USEREVENT + 1
 pygame.time.set_timer(ADDCOIN, coin_countdown)
 
+ADDSHELL = pygame.USEREVENT + 1
+pygame.time.set_timer(ADDSHELL, coin_countdown)
+
 # Set up the coin_list
 coin_list = pygame.sprite.Group()
+shell_list = pygame.sprite.Group()
 
 # Initialize the score
 score = 0
 
 # Set up the coin pickup sound
 coin_pickup_sound = pygame.mixer.Sound(
+    str(Path.cwd() / "sounds" / "smw_coin.wav")
+)
+
+shell_pickup_sound = pygame.mixer.Sound(
     str(Path.cwd() / "sounds" / "smw_coin.wav")
 )
 
@@ -115,7 +147,7 @@ while running:
             running = False
 
         # Should you add a new coin?
-        elif event.type == ADDCOIN:
+        if event.type == ADDCOIN:
             # Create a new coin and add it to the coin_list
             new_coin = Coin()
             coin_list.add(new_coin)
@@ -133,6 +165,32 @@ while running:
             # Start a new timer
             pygame.time.set_timer(ADDCOIN, coin_countdown)
 
+            coin_pickup_sound = pygame.mixer.Sound(
+                str(Path.cwd() / "sounds" / "smw_coin.wav")
+            )
+            # Should you add a new coin?
+        if event.type == ADDSHELL:
+            # Create a new shell and add it to the coin_list
+            new_shell = Shell()
+            shell_list.add(new_shell)
+
+            # Speed things up if fewer than three coins are on-screen
+            if len(shell_list) < 3:
+                shell_countdown -= shell_interval
+            # Need to have some interval
+            if shell_countdown < 100:
+                shell_countdown = 100
+
+            # Stop the previous timer by setting the interval to 0
+            pygame.time.set_timer(ADDSHELL, 0)
+
+            # Start a new timer
+            pygame.time.set_timer(ADDSHELL, shell_countdown)
+
+            shell_pickup_sound = pygame.mixer.Sound(
+                str(Path.cwd() / "sounds" / "smw_coin.wav")
+            )
+
     # Update the player position
     player.update(pygame.mouse.get_pos())
 
@@ -140,11 +198,20 @@ while running:
     coins_collected = pygame.sprite.spritecollide(
         sprite=player, group=coin_list, dokill=True
     )
+    shells_collected = pygame.sprite.spritecollide(
+        sprite=player, group=shell_list, dokill=True
+    )
     for coin in coins_collected:
         # Each coin is worth 10 points
         score += 10
         # Play the coin collected sound
         coin_pickup_sound.play()
+
+    for shell in shells_collected:
+        # Each coin is worth 10 points
+        score -= 10
+        # Play the coin collected sound
+        shell_pickup_sound.play()
 
     # Are there too many coins on the screen?
     if len(coin_list) >= COIN_COUNT:
@@ -157,6 +224,9 @@ while running:
     # Draw the coins next
     for coin in coin_list:
         screen.blit(coin.surf, coin.rect)
+
+    for shell in shell_list:
+        screen.blit(shell.surf, shell.rect)
 
     # Then draw the player
     screen.blit(player.surf, player.rect)

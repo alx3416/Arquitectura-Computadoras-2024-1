@@ -115,7 +115,7 @@ ADDCOIN = pygame.USEREVENT + 1
 pygame.time.set_timer(ADDCOIN, coin_countdown)
 
 ADDSHELL = pygame.USEREVENT + 1
-pygame.time.set_timer(ADDSHELL, coin_countdown)
+pygame.time.set_timer(ADDSHELL, shell_countdown)
 
 # Set up the coin_list
 coin_list = pygame.sprite.Group()
@@ -130,7 +130,7 @@ coin_pickup_sound = pygame.mixer.Sound(
 )
 
 shell_pickup_sound = pygame.mixer.Sound(
-    str(Path.cwd() / "sounds" / "smw_coin.wav")
+    str(Path.cwd() / "sounds" / "smw_shell_ricochet.wav")
 )
 
 # Create a player sprite and set its initial position
@@ -188,7 +188,7 @@ while running:
             pygame.time.set_timer(ADDSHELL, shell_countdown)
 
             shell_pickup_sound = pygame.mixer.Sound(
-                str(Path.cwd() / "sounds" / "smw_coin.wav")
+                str(Path.cwd() / "sounds" / "smw_shell_ricochet.wav")
             )
 
     # Update the player position
@@ -214,7 +214,7 @@ while running:
         shell_pickup_sound.play()
 
     # Are there too many coins on the screen?
-    if len(coin_list) >= COIN_COUNT:
+    if len(coin_list) >= COIN_COUNT or score < 0:
         # This counts as an end condition, so you end your game loop
         running = False
 

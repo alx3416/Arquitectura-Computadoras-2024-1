@@ -8,7 +8,7 @@ private:
 void fun()
 {
     SampleClass* p = new SampleClass();
-
+}
 
 int main()
 {

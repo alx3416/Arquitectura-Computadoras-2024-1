@@ -31,3 +31,4 @@ def goldbach_conjeture(value):
 value = 10
 print(is_prime(value))
 print(get_primes(value))
+print(goldbach_conjeture(value))

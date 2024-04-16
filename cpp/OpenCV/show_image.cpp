@@ -6,7 +6,7 @@ int main(int, char**)
     cv::Mat frame, frame_gray;
     cv::VideoCapture cap;
 
-    int deviceID = 1; // 0 = open default camera
+    int deviceID = 0; // 0 = open default camera
     int apiID = cv::CAP_ANY; // 0 = autodetect default API
     cap.open(deviceID, apiID);
     if (!cap.isOpened()) {

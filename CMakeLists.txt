@@ -5,3 +5,4 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(cpp/pointers)
 add_subdirectory(cpp/parallel)
+add_subdirectory(cpp/OpenCV)

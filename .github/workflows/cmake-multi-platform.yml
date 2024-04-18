@@ -45,6 +45,9 @@ jobs:
             c_compiler: cl
 
     steps:
+    - name: Setup OpenCV
+      uses: Dovyski/setup-opencv-action@v1.1
+            
     - uses: actions/checkout@v3
 
     - name: Set reusable strings

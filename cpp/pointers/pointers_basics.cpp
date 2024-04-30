@@ -16,7 +16,7 @@ int main() {
 
     printf("Second char is: %s\n", (myWord+1));
 
-
+    // Ahora declaremos una función para sumar dos números
 
     return 0;
 

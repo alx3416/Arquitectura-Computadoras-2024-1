@@ -1,5 +1,5 @@
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
 
 // check https://www.geeksforgeeks.org/dynamic-memory-allocation-in-c-using-malloc-calloc-free-and-realloc/
 
@@ -46,17 +46,17 @@ int main()
 
     // C realloc
     // modifica el tamaño del array, en caso de añadir valores, estos se inician en cero
-    myArray = (int*)realloc(myArray, 10);
+    auto mySmallArray = (int*)realloc(myArray, 10 * sizeof(int));
     for (size_t j = 0; j < 10; j++)
     {
-        myArray[j] = 3;
+        mySmallArray[j] = 3;
     }
-    for (size_t j = 0; j < 12; j++)
+    for (size_t j = 0; j < 10; j++)
     {
-        std::cout << "position " << j << " valor guardado es " << myArray[j] << std::endl;
+        std::cout << "position " << j << " valor guardado es " << mySmallArray[j] << std::endl;
     }
-    std::cin.ignore(); // revisamos uso de RAM
-    free(myArray);
+    free(mySmallArray);
+
 
     return 0;
 }

@@ -4,7 +4,7 @@ class SmartPtr {
     int* ptr; // Puntero a almacenar
 public:
     // Constructor
-    explicit SmartPtr(int* p = NULL) {
+    explicit SmartPtr(int* p = nullptr) {
     ptr = p;
     }
 

@@ -3,7 +3,7 @@
 
 // multiply matrices function with dynamic memory
 void multiplyMatrices(){
-    // we need to create an algo to sort a vector!
+    // we need to create an algo to multiply matrices!
     ;
 }
 

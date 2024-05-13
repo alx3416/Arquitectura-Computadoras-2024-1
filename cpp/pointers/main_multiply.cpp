@@ -2,14 +2,13 @@
 #include <cstdlib>
 
 // multiply matrices function with dynamic memory
-void multiplyMatrices(){
+void multiplyMatrices() {
     // we need to create an algo to multiply matrices!
     ;
 }
 
 // Function to print an array
-void print2DArray(int** array, int const rows, int const columns)
-{
+void print2DArray(int **array, int const rows, int const columns) {
     std::cout << "Printing array: " << std::endl;
     for (size_t i = 0; i < rows; i++) {
         for (size_t j = 0; j < columns; j++) {
@@ -19,8 +18,7 @@ void print2DArray(int** array, int const rows, int const columns)
     }
 }
 
-void set2DArray(int** array, int const rows, int const columns)
-{
+void set2DArray(int **array, int const rows, int const columns) {
     int value = 0;
     for (size_t i = 0; i < rows; i++) {
         for (size_t j = 0; j < columns; j++) {
@@ -31,13 +29,12 @@ void set2DArray(int** array, int const rows, int const columns)
 }
 
 // Driver program to test above functions
-int main()
-{
+int main() {
     // you can try other sizes
     int rows = 5;
     int columns = 7;
     int **matrix = new int *[rows];
-    for(int i = 0; i < rows; ++i) {
+    for (int i = 0; i < rows; ++i) {
         matrix[i] = new int[columns];
     }
 
@@ -60,10 +57,10 @@ int main()
 
 
     // this code is to deallocate memory
-    for(int i = 0; i < rows; ++i) {
-        delete [] matrix[i];
+    for (int i = 0; i < rows; ++i) {
+        delete[] matrix[i];
     }
-    delete [] matrix;
+    delete[] matrix;
 
     return 0;
 }

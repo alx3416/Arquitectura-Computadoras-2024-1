@@ -13,4 +13,5 @@ int main()
 
     std::cout << "auto_ptr x = " << x.get() << std::endl; // Print NULL
     std::cout << "auto_ptr y = " << y.get() << std::endl; // Print non-NULL address i
+
 }

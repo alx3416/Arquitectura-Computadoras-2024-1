@@ -36,8 +36,9 @@ int main() {
     std::unique_ptr<Rectangle> P1(new Rectangle(10, 5));
     std::cout << P1->area() << std::endl; // Aqui deben ser 50
 
-    std::unique_ptr<Rectangle> P2(nullptr);
-    P2 = std::move(P1);
+    // std::unique_ptr<Rectangle> P2(nullptr);
+    auto P2 = std::move(P1);
+
 
     // Aqui deben ser 50
     std::cout << P2->area() << std::endl;
@@ -48,6 +49,7 @@ int main() {
     // ¿Podemos pasar como argumentos de entrada los punteros unique a una función?
     // Sin puntero inteligente
     setLenghtAndPrintArea(newObject);
+    std::cout << newObject.area() << std::endl;
     setLenghtAndPrintAreaPtr(P2);
     std::cout << P2->area() << std::endl;
 

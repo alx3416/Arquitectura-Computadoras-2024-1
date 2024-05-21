@@ -51,7 +51,7 @@ int main()
     {
         mySmallArray[j] = 3;
     }
-    for (size_t j = 0; j < 10; j++)
+    for (size_t j = 0; j < 12; j++)
     {
         std::cout << "position " << j << " valor guardado es " << mySmallArray[j] << std::endl;
     }

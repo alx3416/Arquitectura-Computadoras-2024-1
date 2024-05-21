@@ -1,5 +1,11 @@
 #include <iostream>
 
+void arrayTest(int myNumbers[]){
+    for (size_t i = 0; i < 5; i++) {
+        myNumbers[i] = 7;
+    }
+}
+
 int main()
 {
     // Declaración de arreglos en C
@@ -49,7 +55,7 @@ int main()
     }
 
     // Podemos hacer un Array en 2D y tratarlo como una matriz
-    int myMatrix[3][3];
+    int myMatrix[3][3] = {5};
     for (size_t rows = 0; rows < 3; rows++) {
         for (size_t cols = 0; cols < 3; cols++)
         {
@@ -57,6 +63,8 @@ int main()
         }
         std::cout << std::endl;
     }
+
+    arrayTest(myArray);
 
     // ¿Como hacer un programa que obtenga el determinante de una matriz de 2x2?
 

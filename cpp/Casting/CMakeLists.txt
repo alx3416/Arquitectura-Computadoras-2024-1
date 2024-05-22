@@ -1,0 +1,11 @@
+set(CASTING_IMPLICIT casting_implicit)
+set(STATIC_CASTING static_casting)
+set(DYNAMIC_CASTING dynamic_casting)
+set(CONST_CASTING const_casting)
+set(REINTERPRET_CASTING reinterpret_casting)
+
+add_executable(${CASTING_IMPLICIT} implicit_conversion.cpp)
+add_executable(${STATIC_CASTING} static_casting.cpp)
+add_executable(${DYNAMIC_CASTING} dynamic_casting.cpp)
+add_executable(${CONST_CASTING} const_casting.cpp)
+add_executable(${REINTERPRET_CASTING} reinterpret_casting.cpp)

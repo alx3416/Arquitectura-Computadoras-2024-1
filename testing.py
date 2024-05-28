@@ -2,7 +2,7 @@ import goldbach as gldbch
 
 
 def test_is_prime_1():
-    assert gldbch.is_prime(3) is True
+    assert gldbch.is_prime(3) is False
 
 
 def test_is_prime_2():

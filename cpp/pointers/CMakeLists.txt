@@ -6,6 +6,7 @@ set(TARGET_NAME_HEAP heap_allocating)
 set(TARGET_NAME_HEAP_CPP heap_allocating_new)
 set(TARGET_NAME_BUBBLE bubble_sort)
 set(TARGET_NAME_MULTIPLY array_multiply)
+set(TARGET_NAME_VECTORS add_vectors)
 
 add_executable(${TARGET_NAME} pointers.cpp
         pointers_utils.h)
@@ -23,3 +24,5 @@ add_executable(${TARGET_NAME_HEAP_CPP} heap_allocating_new.cpp)
 add_executable(${TARGET_NAME_BUBBLE} main_sort.cpp)
 
 add_executable(${TARGET_NAME_MULTIPLY} main_multiply.cpp)
+
+add_executable(${TARGET_NAME_VECTORS} add_vectors.cpp)

@@ -6,7 +6,12 @@ int addValues(int a, int b){
     return a + b;
 }
 
-void addValues2(int &res,const int &a, const int &b){
+double addValues(double a, double b){
+    a = 0;
+    return a + b;
+}
+
+void addValues2(int &res, const int &a, const int &b){
     res = a + b;
 }
 
@@ -45,10 +50,10 @@ int main() {
     int* ptr1 = nullptr;
     std::cout << "valor 1: " << value1 << std::endl;
     std::cout << "valor 2: " << value2 << std::endl;
-    swapValues(ptr1, &value2);
+    swapValues(&value1, &value2);
     std::cout << "After swap\n";
     std::cout << "valor 1: " << value1 << std::endl;
     std::cout << "valor 2: " << value2 << std::endl;
     return 0;
-    auto x = std::scanf();
+
 }

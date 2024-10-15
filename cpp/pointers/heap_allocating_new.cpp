@@ -10,7 +10,7 @@ int main()
     size_t n = 10;
     int *data = new int[n];
 
-    for (size_t j = 0; j < n; j++)
+    for (size_t j = 0; j < 10; j++)
     {
         std::cout << "position " << j << " valor guardado es " << data[j] << std::endl;
     }

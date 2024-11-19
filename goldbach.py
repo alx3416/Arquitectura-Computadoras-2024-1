@@ -1,3 +1,11 @@
+import math
+
+
+def get_circle_area(radius):
+    area = math.pi * radius ** 2
+    return area
+
+
 def is_prime(value):
     result = False
     if value == 2:
@@ -19,6 +27,7 @@ def get_primes(value):
             my_list.append(num)
     return my_list
 
+
 def goldbach_conjeture(value):
     primes_list = get_primes(value)
     goldbach_list = []
@@ -27,6 +36,7 @@ def goldbach_conjeture(value):
             if num1 + num2 == value:
                 goldbach_list.append([num1, num2])
     return goldbach_list
+
 
 value = 10
 print(is_prime(value))

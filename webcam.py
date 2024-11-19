@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 kernel = np.array([-1, 1])
-cam = cv2.VideoCapture(0)
+cam = cv2.VideoCapture(1, cv2.CAP_DSHOW)
 while True:
     ret_val, img = cam.read()
 
@@ -10,10 +10,12 @@ while True:
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     rows, cols, channels = img.shape
     img_out = img_gray.copy()
-    for row in range(rows-1):
-        for col in range(cols):
-            img_out[row][col] = float(img_gray[row][col]) - float(img_gray[row + 1][col])
-            img_out[row][col] =np.uint8((img_out[row][col] + 255)/2)
+    kernel1 = np.array([[0.111, 0.111, 0.111],
+                        [0.111, 0.111, 0.111],
+                        [0.111, 0.111, 0.111]])
+
+    img_out = cv2.filter2D(src=img_gray, ddepth=-1, kernel=kernel1)
+    img_out = (img_out+255)/512
 
     cv2.imshow('my webcam', img_out)
     cv2.imshow('original', img)

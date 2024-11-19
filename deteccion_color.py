@@ -19,8 +19,8 @@ def deteccion_color(img_in):  # Nombre de la función y variables de entrada
 
     # z=(np.bitwise_and(a>0,a>np.abs(b))) # Detección de rojos
     # z=np.bitwise_and(a<0,np.abs(a)>np.abs(b)) # Detección de verdes
-    # z=np.bitwise_and( b>0, b>np.abs(a) ) # Detección de amarillos
-    z = np.bitwise_and(b < 0, np.abs(b) > np.abs(a))  # Detección de azules
+    z=np.bitwise_and( b>0, b>np.abs(a) ) # Detección de amarillos
+    # z = np.bitwise_and(b < 0, np.abs(b) > np.abs(a))  # Detección de azules
 
     new_a = a
     new_b = b
@@ -35,4 +35,4 @@ def deteccion_color(img_in):  # Nombre de la función y variables de entrada
     img_out = cv2.cvtColor(img_out, cv2.COLOR_LAB2BGR)
 
     # variables de salida
-    return img_out;
+    return img_out

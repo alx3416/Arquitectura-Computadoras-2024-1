@@ -41,10 +41,13 @@ class ArduinoSignalPlotter:
             data = self.ser.readline().decode('utf-8').strip()  # Read and decode serial data
             print(f"Received: {data}")  # Print the received data (for debugging)
 
-            if data == "turn on":
+            if data == "LED ON":
                 self.signal_data.append(1)
-            elif data == "turn off":
+            elif data == "LED OFF":
                 self.signal_data.append(0)
+
+            if len(self.signal_data) >= 10:
+                self.signal_data = self.signal_data[1:]
 
             # Update the plot with new data
             self.update_plot()
@@ -59,7 +62,7 @@ class ArduinoSignalPlotter:
 
 # Usage: Create an instance of the ArduinoSignalPlotter class
 if __name__ == "__main__":
-    serial_port = 'COM3'  # Update this with your Arduino's port
+    serial_port = 'COM5'  # Update this with your Arduino's port
     baud_rate = 9600      # Set the correct baud rate
 
     plotter = ArduinoSignalPlotter(serial_port, baud_rate)

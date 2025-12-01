@@ -3,3 +3,6 @@
 /cmake-build-release
 /.vs
 /out
+/__pycache__
+/build
+CMakeSettings.json

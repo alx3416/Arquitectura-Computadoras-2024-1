@@ -1,7 +1,13 @@
 import pika
 
-# Conexión al servidor RabbitMQ (localhost por defecto)
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+# Conexión al servidor RabbitMQ local
+credentials = pika.PlainCredentials('miusuario', 'mipassword')
+parameters = pika.ConnectionParameters(
+    host='localhost',  # En Debian puede seguir siendo localhost
+    credentials=credentials
+)
+
+connection = pika.BlockingConnection(parameters)
 channel = connection.channel()
 
 # Crear/asegurar la cola

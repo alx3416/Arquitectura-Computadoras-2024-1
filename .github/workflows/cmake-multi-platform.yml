@@ -44,8 +44,12 @@ jobs:
           - os: ubuntu-latest
             c_compiler: cl
 
-    steps:
+    steps:          
     - uses: actions/checkout@v3
+
+    - name: Install dependencies
+      shell: bash
+      run: sudo apt-get update ; sudo apt-get install python3-opencv
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
